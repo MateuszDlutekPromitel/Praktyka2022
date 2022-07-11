@@ -1,0 +1,159 @@
+﻿<Window x:Class="promitel1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:promitel1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <StackPanel Height="40" Orientation="Horizontal">
+                <Button Content="Import XLS" Click="Button_Click_Import" Width="150" Margin="10"/>
+                <Button Content="Export XLS" Click="Button_Click_Export" Width="150" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBox Name="TextBoxNoFilter" Width="80" Margin="5" VerticalAlignment="Center" PreviewTextInput="TextBoxNo_PreviewTextInput"/>
+                <TextBox Name="TextBoxPlateNoFilter" Width="80" Margin="5" VerticalAlignment="Center" PreviewTextInput="TextBoxPlateNo_PreviewTextInput"/>
+                <TextBox Name="TextBoxGroupFilter" Width="30" Margin="5" VerticalAlignment="Center" PreviewTextInput="TextBoxGroup_PreviewTextInput"/>
+                <DatePicker Name="TextBoxStartDateFilter" Width="105" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DatePicker Name="TextBoxEndDateFilter" Width="105" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Name="TextBoxCardIDFilter" Width="80" Margin="5" VerticalAlignment="Center" PreviewTextInput="TextBoxCardID_PreviewTextInput"/>
+                <Button Content="Add Filters" Click="Button_Click_Add_Filters" Width="80" Margin="10"/>
+                <Button Content="Reset Filters" Click="Button_Click_Remove_Filters" Width="80" Margin="10"/>
+            </StackPanel>
+
+
+            <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Test" Click="Button_Click_Test" Width="50" Margin="10"/>
+                <Button Content="Edit Checked" Click="Button_Click_Edit_Checked" Width="80" Margin="10"/>
+                <!--<Menu  Width="84" Margin="10" BorderBrush="DimGray" Background="#DDDDDD"  BorderThickness="1">
+                    <MenuItem Header="Edit Checked" VerticalAlignment="Center" Height="20" Width="84">
+                        <MenuItem Header="Number" Click="MenuItem_Click_No"/>
+                        <MenuItem Header="Plate Number" Click="MenuItem_Click_PlateNo"/>
+                        <MenuItem Header="Group" Click="MenuItem_Click_Group"/>
+                        <MenuItem Header="Start Date" Click="MenuItem_Click_StartDate"/>
+                        <MenuItem Header="End Date" Click="MenuItem_Click_EndDate"/>
+                        <MenuItem Header="Card ID" Click="MenuItem_Click_CardID"/>
+                    </MenuItem>
+                </Menu>
+
+                --><!-- --><!--
+                <Button Content="Edit Checked CM"  Margin="10">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <EventTrigger RoutedEvent="Click">
+                                    <EventTrigger.Actions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
+                                                </BooleanAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger.Actions>
+                                </EventTrigger>
+                            </Style.Triggers>
+                            <Setter Property="ContextMenu">
+                                <Setter.Value>
+                                    <ContextMenu>
+                                        <MenuItem Header="Number" />
+                                        <MenuItem Header="Plate Number"/>
+                                        <MenuItem Header="Group"/>
+                                        <MenuItem Header="Start Date"/>
+                                        <MenuItem Header="End Date"/>
+                                        <MenuItem Header="Card ID"/>
+                                    </ContextMenu>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>-->
+                <!-- -->
+                <Button Content="Check Selected" Click="Button_Click_Check_Selected" Width="90" Margin="10"/>
+                <Button Content="Uncheck Selected" Click="Button_Click_Uncheck_Selected" Width="100" Margin="10"/>
+                <Button Content="Add New Row" Click="Button_Click_Add_Row" Width="90" Margin="10"/>
+                <Button Content="Delete Checked Rows" Click="Button_Click_Delete_Row" Width="130" Margin="10"/>
+            </StackPanel>
+
+        </StackPanel>
+
+
+        <DataGrid Grid.Row="1" Margin="10" Name="xlsDataGrid" VerticalAlignment="Top" 
+                  Background="LightGray" 
+                  SelectionMode="Extended" SelectionUnit="FullRow"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*"
+                  IsReadOnly="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False"
+                  ItemsSource="{Binding}" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+
+                <DataGridTemplateColumn Header="Number">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding No, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="TextBoxNo_PreviewTextInput" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Plate Number">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding PlateNo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="TextBoxPlateNo_PreviewTextInput" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Group">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Group, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="TextBoxGroup_PreviewTextInput" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Start Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding StartDate, StringFormat=\{0:dd.MM.yyyy \}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="End Date">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding EndDate, StringFormat=\{0:dd.MM.yyyy \}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" BorderThickness="0" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Card ID">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding CardID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" PreviewTextInput="TextBoxCardID_PreviewTextInput" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Check">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding Selected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
