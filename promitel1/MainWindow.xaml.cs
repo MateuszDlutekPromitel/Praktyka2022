@@ -33,13 +33,14 @@ namespace promitel1
         {
             string path = "";
 
-
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            //saveFileDialog1.InitialDirectory = @"C:\";
-            saveFileDialog1.Title = "Save Excel File";
-            saveFileDialog1.DefaultExt = "xls";
-            saveFileDialog1.Filter = "xls files(*.xls)| *.xls";
-            saveFileDialog1.RestoreDirectory = true;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog
+            {
+                //saveFileDialog1.InitialDirectory = @"C:\";
+                Title = "Save Excel File",
+                DefaultExt = "xls",
+                Filter = "xls files(*.xls)| *.xls",
+                RestoreDirectory = true
+            };
             if (saveFileDialog1.ShowDialog() == true)
             {
                 path = saveFileDialog1.FileName;
@@ -109,11 +110,13 @@ namespace promitel1
         {
             string path = "";
 
-            OpenFileDialog theDialog = new OpenFileDialog();
-            theDialog.Title = "Open Excel File";
-            theDialog.Filter = "XLS files|*.xls";
-            //theDialog.InitialDirectory = @"C:\";
-            theDialog.RestoreDirectory = true;
+            OpenFileDialog theDialog = new OpenFileDialog
+            {
+                Title = "Open Excel File",
+                Filter = "XLS files|*.xls",
+                //theDialog.InitialDirectory = @"C:\";
+                RestoreDirectory = true
+            };
             if (theDialog.ShowDialog() == true)
             {
                 path = theDialog.FileName;
@@ -475,6 +478,14 @@ namespace promitel1
         public void Set_Value_TextBoxPlateNoFilter(string s)
         {
             TextBoxPlateNoFilter.Text = s;
+        }
+        private void Command_Test_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+        private void Command_Test_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Test LOL");
         }
     }
 }
