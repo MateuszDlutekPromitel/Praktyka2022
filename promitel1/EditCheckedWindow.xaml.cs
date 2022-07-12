@@ -52,44 +52,52 @@ namespace promitel1
         private void Button_Click_Edit(object sender, RoutedEventArgs e)
         {
             mainWin = this.Owner as MainWindow;
-            MessageBox.Show("ButtonEdit");
+            //MessageBox.Show("ButtonEdit");
 
             if (cbNo.IsChecked == true)
             {
-                MessageBox.Show("No");
+                //MessageBox.Show("No");
                 mainWin.Group_Edit_No(Int32.Parse(TextBoxNoFilter.Text));
                 
             }
             if (cbPlateNo.IsChecked == true)
             {
-                MessageBox.Show("Plate");
+                //MessageBox.Show("Plate");
                 mainWin.Group_Edit_PlateNo(TextBoxPlateNoFilter.Text.Trim().ToUpper());
                 
             }
             if (cbGroup.IsChecked == true)
             {
-                MessageBox.Show("Group");
+                //MessageBox.Show("Group");
                 mainWin.Group_Edit_Group(Int32.Parse(TextBoxGroupFilter.Text));
                 
             }
             if (cbStartDate.IsChecked == true)
             {
-                MessageBox.Show("startdate");
+                //MessageBox.Show("startdate");
                 mainWin.Group_Edit_StartTime(DateTime.Parse(TextBoxStartDateFilter.Text));
                 
             }
             if (cbEndDate.IsChecked == true)
             {
-                MessageBox.Show("enddate");
+                //MessageBox.Show("enddate");
                 mainWin.Group_Edit_EndTime(DateTime.Parse(TextBoxEndDateFilter.Text));
             }
             if (cbCardID.IsChecked == true)
             {
-                MessageBox.Show("cardId");
+                //MessageBox.Show("cardId");
                 mainWin.Group_Edit_CardID(TextBoxCardIDFilter.Text.Trim());
             }
 
             Close();
         }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (null != Owner)
+            {
+                this.Owner.Activate();
+            }
+        }
+
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:promitel1"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="EditCheckedWindow" Height="300" Width="200">
     <Grid>
         <Grid.RowDefinitions>
