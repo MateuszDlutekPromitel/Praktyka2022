@@ -28,8 +28,11 @@ namespace promitel1
         {
             InitializeComponent();
             xlsDataGrid.ItemsSource = importedList;
-            
 
+            //Mati tu był
+            var foo = "Test";
+
+            var foo2 = "Test2";
         }
         private void Button_Click_Export(object sender, RoutedEventArgs e)
         {
