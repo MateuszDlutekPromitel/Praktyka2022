@@ -28,8 +28,9 @@ namespace promitel1
         {
             InitializeComponent();
             xlsDataGrid.ItemsSource = importedList;
-            
 
+            //powrot
+            
         }
         private void Button_Click_Export(object sender, RoutedEventArgs e)
         {
