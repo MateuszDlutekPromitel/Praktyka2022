@@ -28,9 +28,6 @@ namespace promitel1
         {
             InitializeComponent();
             xlsDataGrid.ItemsSource = importedList;
-
-            //powrot
-            
         }
         private void Button_Click_Export(object sender, RoutedEventArgs e)
         {
@@ -279,7 +276,10 @@ namespace promitel1
         }
         private void Button_Click_Add_Filters(object sender, RoutedEventArgs e)
         {
-          
+            Add_Filter(new Predicate<object>(Filter));
+        }
+        public void Add_Filter(Predicate<object> currentFilter)
+        {
             // Collection which will take your ObservableCollection
             var _itemSourceList = new CollectionViewSource() { Source = importedList };
 
@@ -287,10 +287,9 @@ namespace promitel1
             ICollectionView Itemlist = _itemSourceList.View;
 
             //now we add our Filter
-            Itemlist.Filter = new Predicate<object>(Filter);
+            Itemlist.Filter = currentFilter;
 
             xlsDataGrid.ItemsSource = Itemlist;
-           
         }
         private bool Filter(object f)
         {
@@ -419,6 +418,42 @@ namespace promitel1
             {
                 e.Cancel = false;
             }
+        }
+        private void Button_Click_Check_Duplicates(object sender, RoutedEventArgs e)
+        {
+            List<String> duplicatedPlateNo = new List<string>(); 
+
+            for(int i = 0; i < importedList.Count; i++)
+            {
+                int howManyDuplicates = 0;
+                var item1 = importedList[i];
+                for (int j = i+1; j < importedList.Count; j++)
+                {
+                    
+                    var item2 = importedList[j];
+                    //Console.WriteLine(i + " " + j);
+                    if (item1.PlateNo.Equals(item2.PlateNo))
+                    {
+                        howManyDuplicates++;
+                    }
+                }
+
+                if(howManyDuplicates > 0)
+                {
+                    if (!duplicatedPlateNo.Contains(item1.PlateNo))
+                    {
+                        duplicatedPlateNo.Add(item1.PlateNo);
+                    }
+                    
+                }
+            }
+
+            //here open a windows with all duplicated Plate Numbers and with buttons allowing to filter them 
+            DuplicatesFiltersWindow duplicatesFiltersWin = new DuplicatesFiltersWindow(duplicatedPlateNo);
+            duplicatesFiltersWin.Owner = this;
+            duplicatesFiltersWin.Show();
+
+            
         }
     }
 }

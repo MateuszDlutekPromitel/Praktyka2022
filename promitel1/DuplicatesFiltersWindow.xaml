@@ -1,0 +1,28 @@
+﻿<Window x:Class="promitel1.DuplicatesFiltersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:promitel1"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="DuplicatesFiltersWindow" Height="300" Width="200">
+    <Grid>
+        <DataGrid ItemsSource="{Binding Code}"
+                  Margin="10" Name="plateNoDataGrid" VerticalAlignment="Top" AutoGenerateColumns="False"
+                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*"
+                  IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="PlateNo" Binding="{Binding}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Filter" Click="Click_Button_Filter" CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -32,6 +32,7 @@
 
 
             <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Check duplicates" Click="Button_Click_Check_Duplicates" Margin="10"/>
                 <Button Content="Test" Click="Button_Click_Test" Width="50" Margin="10"/>
                 <Button Content="Edit Checked" Click="Button_Click_Edit_Checked" Width="80" Margin="10"/>
                 <Button Content="Check Selected" Click="Button_Click_Check_Selected" Width="90" Margin="10"/>
