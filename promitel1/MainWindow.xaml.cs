@@ -410,6 +410,7 @@ namespace promitel1
         }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
+            /*
             if(MessageBox.Show("Close Application?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
                 e.Cancel = true;
@@ -418,6 +419,22 @@ namespace promitel1
             {
                 e.Cancel = false;
             }
+            */
+            var messageAnswer = MessageBox.Show("Do you want to save before closing?", "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            if ( messageAnswer == MessageBoxResult.Yes)
+            {
+                Button_Click_Export(null, null);
+                e.Cancel = false;
+            }
+            else if(messageAnswer == MessageBoxResult.No)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+            
         }
         private void Button_Click_Check_Duplicates(object sender, RoutedEventArgs e)
         {
@@ -455,7 +472,6 @@ namespace promitel1
 
             
         }
-
         public void Set_Value_TextBoxPlateNoFilter(string s)
         {
             TextBoxPlateNoFilter.Text = s;
