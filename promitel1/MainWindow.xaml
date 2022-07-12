@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:promitel1"
         mc:Ignorable="d"
+        Closing="Window_Closing"
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
@@ -33,50 +34,6 @@
             <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Test" Click="Button_Click_Test" Width="50" Margin="10"/>
                 <Button Content="Edit Checked" Click="Button_Click_Edit_Checked" Width="80" Margin="10"/>
-                <!--<Menu  Width="84" Margin="10" BorderBrush="DimGray" Background="#DDDDDD"  BorderThickness="1">
-                    <MenuItem Header="Edit Checked" VerticalAlignment="Center" Height="20" Width="84">
-                        <MenuItem Header="Number" Click="MenuItem_Click_No"/>
-                        <MenuItem Header="Plate Number" Click="MenuItem_Click_PlateNo"/>
-                        <MenuItem Header="Group" Click="MenuItem_Click_Group"/>
-                        <MenuItem Header="Start Date" Click="MenuItem_Click_StartDate"/>
-                        <MenuItem Header="End Date" Click="MenuItem_Click_EndDate"/>
-                        <MenuItem Header="Card ID" Click="MenuItem_Click_CardID"/>
-                    </MenuItem>
-                </Menu>
-
-                --><!-- --><!--
-                <Button Content="Edit Checked CM"  Margin="10">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Style.Triggers>
-                                <EventTrigger RoutedEvent="Click">
-                                    <EventTrigger.Actions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
-                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
-                                                </BooleanAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger.Actions>
-                                </EventTrigger>
-                            </Style.Triggers>
-                            <Setter Property="ContextMenu">
-                                <Setter.Value>
-                                    <ContextMenu>
-                                        <MenuItem Header="Number" />
-                                        <MenuItem Header="Plate Number"/>
-                                        <MenuItem Header="Group"/>
-                                        <MenuItem Header="Start Date"/>
-                                        <MenuItem Header="End Date"/>
-                                        <MenuItem Header="Card ID"/>
-                                    </ContextMenu>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Button.Style>
-                </Button>-->
-                <!-- -->
                 <Button Content="Check Selected" Click="Button_Click_Check_Selected" Width="90" Margin="10"/>
                 <Button Content="Uncheck Selected" Click="Button_Click_Uncheck_Selected" Width="100" Margin="10"/>
                 <Button Content="Add New Row" Click="Button_Click_Add_Row" Width="90" Margin="10"/>

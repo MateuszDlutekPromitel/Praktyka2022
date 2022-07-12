@@ -409,6 +409,16 @@ namespace promitel1
             }
             xlsDataGrid.Items.Refresh();
         }
-
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if(MessageBox.Show("Close Application?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
+        }
     }
 }
