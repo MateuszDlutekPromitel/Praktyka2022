@@ -28,7 +28,7 @@ namespace promitel1
         {
             InitializeComponent();
             xlsDataGrid.ItemsSource = importedList;
-            
+            MessageBox.Show("Program odpalono");  
 
         }
         private void Button_Click_Export(object sender, RoutedEventArgs e)
