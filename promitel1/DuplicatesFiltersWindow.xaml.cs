@@ -35,6 +35,7 @@ namespace promitel1
             mainWin = this.Owner as MainWindow;
             string PlateNo = ((Button)sender).CommandParameter as string;
             mainWin.Add_Filter(new Predicate<object>(item => ((AccessPermision)item).PlateNo.Equals(PlateNo)));
+            mainWin.Set_Value_TextBoxPlateNoFilter(PlateNo);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

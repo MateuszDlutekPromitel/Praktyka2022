@@ -455,5 +455,10 @@ namespace promitel1
 
             
         }
+
+        public void Set_Value_TextBoxPlateNoFilter(string s)
+        {
+            TextBoxPlateNoFilter.Text = s;
+        }
     }
 }
