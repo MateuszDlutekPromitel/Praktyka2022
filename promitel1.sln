@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1", "promitel1\promitel1.csproj", "{55BCD517-7841-4CDF-9C8B-4F911B61F6F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1.admin", "promitel1.admin\promitel1.admin.csproj", "{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{55BCD517-7841-4CDF-9C8B-4F911B61F6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BCD517-7841-4CDF-9C8B-4F911B61F6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55BCD517-7841-4CDF-9C8B-4F911B61F6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

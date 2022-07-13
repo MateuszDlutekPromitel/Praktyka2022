@@ -2,21 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace promitel1
@@ -122,8 +112,6 @@ namespace promitel1
                 path = theDialog.FileName;
             }
 
-            Console.WriteLine(path);
-
             importedList = ImportXLS(path);
 
             xlsDataGrid.ItemsSource = importedList;
@@ -155,40 +143,52 @@ namespace promitel1
             {
                 ap = new AccessPermision();
 
-                try {
+                try
+                {
                     ap.No = Int32.Parse(xlRange.Cells[i, 1].Value2);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error No " + ex.Message);
                 }
-                try {
+                try
+                {
                     ap.PlateNo = xlRange.Cells[i, 2].Value2.ToString();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error PlateNo " + ex.Message);
                 }
-                try {
+                try
+                {
                     ap.Group = Int32.Parse(xlRange.Cells[i, 3].Value2);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error Group " + ex.Message);
                 }
-                try {
+                try
+                {
                     ap.StartDate = DateTime.Parse(xlRange.Cells[i, 4].Value2);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error StartDate " + ex.Message);
                 }
-                try {
+                try
+                {
                     ap.EndDate = DateTime.Parse(xlRange.Cells[i, 5].Value2);
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error EndDate " + ex.Message);
                 }
-                try {
+                try
+                {
                     ap.CardID = xlRange.Cells[i, 6].Value2.ToString();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     MessageBox.Show("Error CardID " + ex.Message);
                 }
 
@@ -271,7 +271,7 @@ namespace promitel1
         }
         private void Button_Click_Test(object sender, RoutedEventArgs e)
         {
-            foreach(AccessPermision item in importedList.Where(c => c.Selected))
+            foreach (AccessPermision item in importedList.Where(c => c.Selected))
             {
                 MessageBox.Show(item.No.ToString());
             }
@@ -355,7 +355,7 @@ namespace promitel1
             ICollectionView Itemlist = _itemSourceList.View;
             Itemlist.Filter = null;
             xlsDataGrid.ItemsSource = Itemlist;
-            
+
         }
         private void Button_Click_Edit_Checked(object sender, RoutedEventArgs e)
         {
@@ -365,7 +365,7 @@ namespace promitel1
         }
         public void Group_Edit_No(int i)
         {
-            foreach(AccessPermision item in importedList.Where(c => c.Selected))
+            foreach (AccessPermision item in importedList.Where(c => c.Selected))
             {
                 item.No = i;
             }
@@ -379,7 +379,7 @@ namespace promitel1
             }
             xlsDataGrid.Items.Refresh();
         }
-        public  void Group_Edit_Group(int i)
+        public void Group_Edit_Group(int i)
         {
             foreach (AccessPermision item in importedList.Where(c => c.Selected))
             {
@@ -424,12 +424,12 @@ namespace promitel1
             }
             */
             var messageAnswer = MessageBox.Show("Do you want to save before closing?", "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            if ( messageAnswer == MessageBoxResult.Yes)
+            if (messageAnswer == MessageBoxResult.Yes)
             {
                 Button_Click_Export(null, null);
                 e.Cancel = false;
             }
-            else if(messageAnswer == MessageBoxResult.No)
+            else if (messageAnswer == MessageBoxResult.No)
             {
                 e.Cancel = false;
             }
@@ -437,19 +437,19 @@ namespace promitel1
             {
                 e.Cancel = true;
             }
-            
+
         }
         private void Button_Click_Check_Duplicates(object sender, RoutedEventArgs e)
         {
-            List<String> duplicatedPlateNo = new List<string>(); 
+            List<String> duplicatedPlateNo = new List<string>();
 
-            for(int i = 0; i < importedList.Count; i++)
+            for (int i = 0; i < importedList.Count; i++)
             {
                 int howManyDuplicates = 0;
                 var item1 = importedList[i];
-                for (int j = i+1; j < importedList.Count; j++)
+                for (int j = i + 1; j < importedList.Count; j++)
                 {
-                    
+
                     var item2 = importedList[j];
                     //Console.WriteLine(i + " " + j);
                     if (item1.PlateNo.Equals(item2.PlateNo))
@@ -458,13 +458,13 @@ namespace promitel1
                     }
                 }
 
-                if(howManyDuplicates > 0)
+                if (howManyDuplicates > 0)
                 {
                     if (!duplicatedPlateNo.Contains(item1.PlateNo))
                     {
                         duplicatedPlateNo.Add(item1.PlateNo);
                     }
-                    
+
                 }
             }
 
@@ -473,7 +473,7 @@ namespace promitel1
             duplicatesFiltersWin.Owner = this;
             duplicatesFiltersWin.Show();
 
-            
+
         }
         public void Set_Value_TextBoxPlateNoFilter(string s)
         {
