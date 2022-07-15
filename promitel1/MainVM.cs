@@ -1,10 +1,9 @@
-﻿using promitel1.admin.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace promitel1.admin.ViewModels
+namespace promitel1
 {
     internal class MainVM : INotifyPropertyChanged
     {

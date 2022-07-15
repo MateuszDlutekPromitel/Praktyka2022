@@ -48,6 +48,8 @@ namespace promitel1
             }
 
             xlsDataGrid.ItemsSource = importedList;
+            MainVM.CameraList = company.Cameras;
+            MainVM.CompanyName = company.Name;
         }
 
         private void Button_Click_Export(object sender, RoutedEventArgs e)

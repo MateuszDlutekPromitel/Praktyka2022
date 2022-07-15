@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Closing="Window_Closing"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainVM x:Name="MainVM"/>
+    </Window.DataContext>
     <Window.CommandBindings>
         <CommandBinding Command="local:OwnCommands.Test" CanExecute="Command_Test_CanExecute" Executed="Command_Test_Executed" />
     </Window.CommandBindings>
@@ -15,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="120" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <StackPanel Height="40" Orientation="Horizontal">
@@ -115,6 +119,14 @@
 
             </DataGrid.Columns>
         </DataGrid>
+
+        <DockPanel Grid.Row="2">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Text="{Binding CompanyName}"/>
+                </StatusBarItem>
+            </StatusBar>
+        </DockPanel>
 
     </Grid>
 </Window>

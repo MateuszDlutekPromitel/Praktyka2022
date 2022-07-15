@@ -20,9 +20,6 @@ namespace promitel1.admin
         {
             InitializeComponent();
 
-
-
-
             company = new Company
             {
                 Name = "Promitel",
