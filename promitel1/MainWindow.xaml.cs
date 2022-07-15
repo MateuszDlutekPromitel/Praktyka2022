@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -14,9 +16,20 @@ namespace promitel1
     public partial class MainWindow : Window
     {
         List<AccessPermision> importedList = new List<AccessPermision>();
+        private static bool blockingSemaphore = false;
         public MainWindow()
         {
             InitializeComponent();
+
+            string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
+            if (Directory.GetFiles(currentPath, "*.pro").Length == 0)
+            {
+                blockingSemaphore = true;
+                MessageBox.Show("Brak pliku .pro", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+            }
+
+
             xlsDataGrid.ItemsSource = importedList;
         }
         private void Button_Click_Export(object sender, RoutedEventArgs e)
