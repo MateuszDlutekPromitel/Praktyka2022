@@ -3,30 +3,22 @@ using Newtonsoft.Json;
 using promitel1.admin.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace promitel1.admin
 {
-
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
     public partial class MainWindow : Window
     {
         Company company;
-        private static bool blockingSemaphore = false;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            if (Directory.GetFiles(currentPath, "*.pro").Length == 0)
-            {
-                blockingSemaphore = true;
-                MessageBox.Show("Brak pliku .pro", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                System.Windows.Application.Current.Shutdown();
-            }
 
 
 
@@ -120,8 +112,11 @@ namespace promitel1.admin
             using (StreamReader r = new StreamReader(path))
             {
                 string json = r.ReadToEnd();
-                company = JsonConvert.DeserializeObject<Company>(json);
+                Company newCompany = JsonConvert.DeserializeObject<Company>(json);
+
+                company = newCompany;
                 MainVM.CameraList = company.Cameras;
+
             }
         }
 
@@ -131,6 +126,7 @@ namespace promitel1.admin
         }
         private void Command_Safe_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
+
             string json = JsonConvert.SerializeObject(company);
 
             SaveFileDialog saveFileDialog1 = new SaveFileDialog
@@ -151,6 +147,10 @@ namespace promitel1.admin
             {
                 MessageBox.Show("Anulowano zapisywanie");
             }
+
+
+
         }
+
     }
 }
