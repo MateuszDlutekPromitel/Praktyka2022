@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,21 +18,38 @@ namespace promitel1
     {
         List<AccessPermision> importedList = new List<AccessPermision>();
         private static bool blockingSemaphore = false;
+        Company company;
+
         public MainWindow()
         {
             InitializeComponent();
 
             string currentPath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
-            if (Directory.GetFiles(currentPath, "*.pro").Length == 0)
+            string[] proFiles = Directory.GetFiles(currentPath, "*.pro");
+
+            if (proFiles.Length == 0)
             {
                 blockingSemaphore = true;
                 MessageBox.Show("Brak pliku .pro", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.Shutdown();
             }
+            else if (proFiles.Length == 1)
+            {
+                using (StreamReader r = new StreamReader(proFiles[0]))
+                {
+                    string json = r.ReadToEnd();
+                    company = JsonConvert.DeserializeObject<Company>(json);
+                }
 
+            }
+            else if (proFiles.Length > 1)
+            {
+                ///idk co tutaj
+            }
 
             xlsDataGrid.ItemsSource = importedList;
         }
+
         private void Button_Click_Export(object sender, RoutedEventArgs e)
         {
             string path = "";

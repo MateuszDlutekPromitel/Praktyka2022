@@ -67,14 +67,12 @@ namespace promitel1.admin
 
             MainVM.CameraList = company.Cameras;
         }
-
         private void Click_Button_Delete(object sender, RoutedEventArgs e)
         {
             Camera camera = ((Button)sender).CommandParameter as Camera;
             company.Cameras.Remove(camera);
             MainVM.CameraList = company.Cameras;
         }
-
         private void TextBoxMAC_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             if (sender is TextBox tb)
@@ -87,7 +85,6 @@ namespace promitel1.admin
 
             }
         }
-
         private void Command_Open_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -119,7 +116,6 @@ namespace promitel1.admin
 
             }
         }
-
         private void Command_Safe_CanExecute(object sender, System.Windows.Input.CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
