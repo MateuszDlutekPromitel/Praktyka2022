@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using promitel1.common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,9 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace promitel1
 {
+    /// <summary>
+    /// main window that kind stuff
+    /// </summary>
     public partial class MainWindow : Window
     {
         List<AccessPermision> importedList = new List<AccessPermision>();
@@ -32,6 +36,7 @@ namespace promitel1
                 blockingSemaphore = true;
                 MessageBox.Show("Brak pliku .pro", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.Shutdown();
+                return;
             }
             else if (proFiles.Length == 1)
             {
@@ -52,6 +57,11 @@ namespace promitel1
             MainVM.CompanyName = company.Name;
         }
 
+        /// <summary>
+        /// button that exports XLS files
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">eeeeeeeeee</param>
         private void Button_Click_Export(object sender, RoutedEventArgs e)
         {
             string path = "";
@@ -75,6 +85,10 @@ namespace promitel1
             }
 
         }
+        /// <summary>
+        /// exporting XLS
+        /// </summary>
+        /// <param name="path">wheres wil the xls file go</param>
         private void ExportXLS(string path)
         {
             object misValue = System.Reflection.Missing.Value;
@@ -150,6 +164,11 @@ namespace promitel1
             xlsDataGrid.ItemsSource = importedList;
 
         }
+        /// <summary>
+        /// importing xls files that have all the plates and stuff
+        /// </summary>
+        /// <param name="path">wheres the xls file</param>
+        /// <returns>returns a list from the xls to show</returns>
         private List<AccessPermision> ImportXLS(string path)
         {
             List<AccessPermision> apList = new List<AccessPermision>();
@@ -446,29 +465,22 @@ namespace promitel1
         }
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            /*
-            if(MessageBox.Show("Close Application?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            if (blockingSemaphore == false)
             {
-                e.Cancel = true;
-            }
-            else
-            {
-                e.Cancel = false;
-            }
-            */
-            var messageAnswer = MessageBox.Show("Do you want to save before closing?", "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
-            if (messageAnswer == MessageBoxResult.Yes)
-            {
-                Button_Click_Export(null, null);
-                e.Cancel = false;
-            }
-            else if (messageAnswer == MessageBoxResult.No)
-            {
-                e.Cancel = false;
-            }
-            else
-            {
-                e.Cancel = true;
+                var messageAnswer = MessageBox.Show("Do you want to save before closing?", "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                if (messageAnswer == MessageBoxResult.Yes)
+                {
+                    Button_Click_Export(null, null);
+                    e.Cancel = false;
+                }
+                else if (messageAnswer == MessageBoxResult.No)
+                {
+                    e.Cancel = false;
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
             }
 
         }

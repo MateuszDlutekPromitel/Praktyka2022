@@ -1,0 +1,1 @@
+{"Name":"Promitel sp zoo","Cameras":[{"Name":"Camera1","SN":"10273","MAC":"12-AC-3A-5F-00-A2","DataStart":"2022-03-09T00:00:00","DataEnd":"2023-10-02T00:00:00"}]}

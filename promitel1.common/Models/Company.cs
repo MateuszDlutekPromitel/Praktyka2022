@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace promitel1.admin.Models
+namespace promitel1.common
 {
     public class Company
     {

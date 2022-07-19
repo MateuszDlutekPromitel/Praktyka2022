@@ -1,4 +1,4 @@
-﻿using promitel1.admin.Models;
+﻿using promitel1.common;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;

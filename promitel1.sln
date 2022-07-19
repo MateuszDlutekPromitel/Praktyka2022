@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1", "promitel1\prom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1.admin", "promitel1.admin\promitel1.admin.csproj", "{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1.common", "promitel1.common\promitel1.common.csproj", "{168B7807-1CD8-4E7D-A4D6-A53D5806EE5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "promitel1.test", "promitel1.test\promitel1.test.csproj", "{DAD72B04-76F8-444D-8522-82509BD96FB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CC8DA5E-94B7-4C2D-87CB-5D85315E4F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168B7807-1CD8-4E7D-A4D6-A53D5806EE5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168B7807-1CD8-4E7D-A4D6-A53D5806EE5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168B7807-1CD8-4E7D-A4D6-A53D5806EE5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168B7807-1CD8-4E7D-A4D6-A53D5806EE5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD72B04-76F8-444D-8522-82509BD96FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD72B04-76F8-444D-8522-82509BD96FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD72B04-76F8-444D-8522-82509BD96FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD72B04-76F8-444D-8522-82509BD96FB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
